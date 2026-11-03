@@ -1,0 +1,644 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IRONPULSE Fitness Equipment Store</title>
+
+<style>
+/* General */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial;
+    background: #101411;
+    color: white;
+}
+
+/* Navigation */
+nav {
+    padding: 18px 7%;
+    background: #171e19;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #b7f000;
+}
+
+.logo, h2, h3 {
+    color: #b7f000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover {
+    color: #b7f000;
+}
+
+/* Hero */
+.hero {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    background: #1b241e;
+}
+
+.hero > div {
+    width: 50%;
+    padding: 30px;
+}
+
+.hero img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero span {
+    color: #b7f000;
+}
+
+.hero p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Images and Buttons */
+img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+button {
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 10px;
+    background: #b7f000;
+    color: #101411;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #d2ff43;
+}
+
+/* Sections */
+section {
+    padding: 45px 7%;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sub {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 25px;
+}
+
+/* Form */
+.box {
+    max-width: 800px;
+    margin: auto;
+    background: #1b241e;
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid #344238;
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    color: #b7f000;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #647267;
+    border-radius: 8px;
+    background: #101711;
+    color: white;
+}
+
+textarea {
+    height: 70px;
+}
+
+.submit {
+    width: 100%;
+    margin-top: 12px;
+}
+
+/* Results */
+#result, #selected {
+    display: none;
+    background: #29372c;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+    line-height: 1.8;
+}
+
+/* Products */
+.products {
+    background: #151c17;
+}
+
+/* 3 Cards Per Row */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/* Product Card */
+.card {
+    background: #1b241e;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px #0005;
+    border: 1px solid #344238;
+}
+
+.card-img {
+    height: 150px;
+    background: linear-gradient(135deg, #29372c, #465c36);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+}
+
+.content {
+    padding: 15px;
+}
+
+.content p {
+    color: #ccc;
+    margin: 8px 0;
+}
+
+.info {
+    font-size: 13px;
+    color: #aaa;
+    margin: 5px 0;
+}
+
+.price {
+    color: #b7f000;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.card button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Features */
+.feature {
+    text-align: center;
+    padding: 20px;
+    background: #1b241e;
+    border-radius: 15px;
+    border: 1px solid #344238;
+}
+
+.icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #171e19;
+    color: #b7f000;
+    padding: 25px;
+    border-top: 2px solid #b7f000;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .hero {
+        display: block;
+    }
+
+    .hero div {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .row {
+        display: block;
+    }
+
+    .group {
+        margin-bottom: 15px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        display: block;
+    }
+
+    nav div {
+        margin: 10px 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="logo">IRONPULSE</div>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#products">Products</a>
+        <a href="#features">Features</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+
+    <div>
+        <h1>
+            Build Strength,<br>
+            <span>Achieve More.</span>
+        </h1>
+
+        <p>
+            Discover quality fitness equipment and
+            transform your fitness journey with IRONPULSE.
+        </p>
+
+        <button onclick="go()">
+            Find My Equipment →
+        </button>
+    </div>
+
+    <div>
+        <img src="fitness.png"
+             alt="IRONPULSE Fitness Equipment">
+    </div>
+
+</section>
+
+<!-- Requirements Section -->
+<section id="requirements">
+
+    <h2 class="title">
+        Tell Us What You Need
+    </h2>
+
+    <p class="sub">
+        Enter your fitness equipment requirements.
+    </p>
+
+    <div class="box">
+
+        <form id="form">
+
+            <div class="row">
+
+                <div class="group">
+                    <label>Name</label>
+                    <input id="name" type="text"
+                           placeholder="Enter your name"
+                           required>
+                </div>
+
+                <div class="group">
+                    <label>Equipment Category</label>
+                    <select id="category" required>
+                        <option value="">Select</option>
+                        <option>Cardio Equipment</option>
+                        <option>Strength Equipment</option>
+                        <option>Yoga Equipment</option>
+                        <option>Accessories</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="group">
+                    <label>Fitness Level</label>
+                    <select id="level" required>
+                        <option value="">Select</option>
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+                </div>
+
+                <div class="group">
+                    <label>Fitness Goal</label>
+                    <select id="goal" required>
+                        <option value="">Select</option>
+                        <option>Weight Loss</option>
+                        <option>Muscle Building</option>
+                        <option>Strength Training</option>
+                        <option>General Fitness</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="group">
+                    <label>Daily Workout Time</label>
+                    <select id="time">
+                        <option>15 minutes</option>
+                        <option>30 minutes</option>
+                        <option>1 hour</option>
+                        <option>2+ hours</option>
+                    </select>
+                </div>
+
+                <div class="group">
+                    <label>Workout Mode</label>
+                    <select id="mode">
+                        <option>Home Workout</option>
+                        <option>Gym Workout</option>
+                        <option>Outdoor Training</option>
+                        <option>Mixed Training</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <textarea id="msg"
+                placeholder="Enter your equipment requirements">
+            </textarea>
+
+            <button class="submit" type="submit">
+                Find Equipment
+            </button>
+
+        </form>
+
+        <div id="result">
+            <p id="output"></p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Products Section -->
+<section class="products" id="products">
+
+    <h2 class="title">
+        Popular Fitness Equipment
+    </h2>
+
+    <p class="sub">
+        Choose the right equipment for your fitness journey.
+    </p>
+
+    <div class="cards" id="productCards">
+    </div>
+
+    <div id="selected">
+
+        <h3>Product Selected!</h3>
+
+        <p id="selectedText"></p>
+
+        <button onclick="confirmProduct()">
+            Confirm
+        </button>
+
+    </div>
+
+</section>
+
+<!-- Features Section -->
+<section id="features">
+
+    <h2 class="title">
+        Why Choose IRONPULSE?
+    </h2>
+
+    <p class="sub">
+        Everything you need for better fitness.
+    </p>
+
+    <div class="cards">
+
+        <div class="feature">
+            <div class="icon">🏋️</div>
+            <h3>Quality Equipment</h3>
+        </div>
+
+        <div class="feature">
+            <div class="icon">🚚</div>
+            <h3>Fast Delivery</h3>
+        </div>
+
+        <div class="feature">
+            <div class="icon">💪</div>
+            <h3>Strength Training</h3>
+        </div>
+
+        <div class="feature">
+            <div class="icon">⭐</div>
+            <h3>Best Products</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Footer -->
+<footer>
+    IRONPULSE FITNESS EQUIPMENT STORE
+    <br><br>
+    Train. Perform. Achieve.
+</footer>
+
+<script>
+
+/* Product Data */
+let data = [
+    ["🏃", "Treadmill", "24999"],
+    ["🏋️", "Dumbbell Set", "2999"],
+    ["🚴", "Exercise Cycle", "12999"],
+    ["💪", "Weight Bench", "5999"],
+    ["🧘", "Yoga Mat", "799"],
+    ["🪢", "Resistance Bands", "499"]
+];
+
+/* Create Product Cards */
+data.forEach(x => {
+
+    document.getElementById("productCards").innerHTML += `
+    <div class="card">
+
+        <div class="card-img">
+            ${x[0]}
+        </div>
+
+        <div class="content">
+
+            <h3>${x[1]}</h3>
+
+            <p>
+                Improve your fitness with quality equipment.
+            </p>
+
+            <div class="info">
+                Durable Quality
+            </div>
+
+            <div class="info">
+                Suitable for Training
+            </div>
+
+            <div class="price">
+                ₹${x[2]}
+            </div>
+
+            <button onclick="selectProduct('${x[1]}')">
+                Choose Product
+            </button>
+
+        </div>
+
+    </div>
+    `;
+
+});
+
+/* Scroll to Requirements */
+function go() {
+
+    document.getElementById("requirements")
+    .scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+/* Form Submission */
+document.getElementById("form").onsubmit = e => {
+
+    e.preventDefault();
+
+    let customerName = document.getElementById("name").value;
+    let category = document.getElementById("category").value;
+    let level = document.getElementById("level").value;
+    let goal = document.getElementById("goal").value;
+    let time = document.getElementById("time").value;
+    let mode = document.getElementById("mode").value;
+    let msg = document.getElementById("msg").value;
+
+    document.getElementById("output").innerHTML = `
+        Hello <b>${customerName}</b>!<br>
+        Equipment Category: <b>${category}</b><br>
+        Fitness Level: <b>${level}</b><br>
+        Fitness Goal: <b>${goal}</b><br>
+        Workout Time: <b>${time}</b><br>
+        Workout Mode: <b>${mode}</b><br>
+        Requirements: ${msg || "None"}
+    `;
+
+    document.getElementById("result").style.display = "block";
+
+    /* Product Recommendation */
+    let recommendations = {
+        "Cardio Equipment": "Treadmill",
+        "Strength Equipment": "Dumbbell Set",
+        "Yoga Equipment": "Yoga Mat",
+        "Accessories": "Resistance Bands"
+    };
+
+    alert(
+        "Recommended Product: " +
+        recommendations[category]
+    );
+
+};
+
+/* Product Selection */
+let selected = "";
+
+function selectProduct(product) {
+
+    selected = product;
+
+    document.getElementById("selectedText").innerHTML =
+        "You selected <b>" + product + "</b>";
+
+    document.getElementById("selected").style.display =
+        "block";
+
+}
+
+/* Confirm Product */
+function confirmProduct() {
+
+    if (selected !== "") {
+
+        alert(
+            "Congratulations!\nSelected Product: " +
+            selected
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
